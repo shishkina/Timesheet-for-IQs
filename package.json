@@ -1,0 +1,27 @@
+{
+  "name": "timesheet_for_iqs",
+  "version": "1.0.0",
+  "description": "IQs is a company that works with multiple consultants that are payed at various rates. The issue is that they are currently using Excel spreadsheet for tracking the worked hours. I'm planning to implement an application to track the hours that consultants put in.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shishkina/Timesheet-for-IQs.git"
+  },
+  "author": "Katherine Shishkina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shishkina/Timesheet-for-IQs/issues"
+  },
+  "homepage": "https://github.com/shishkina/Timesheet-for-IQs#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "mongoose": "^4.2.9",
+    "morgan": "^1.6.1"
+  }
+}
