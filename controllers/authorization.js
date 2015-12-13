@@ -2,7 +2,7 @@
 var User = require('../models/user.js');
 
 const jwt = require('jsonwebtoken');
-const secret = "HelloSecret";
+const secret = 'HelloSecret';
 
 function makeToken(req, res){
   //need to check the credentials first
@@ -13,16 +13,22 @@ function makeToken(req, res){
     if(!user){
       res.json({success: false, message:'Authentication failed.User not found.'});
     } else if(user){
+      //
           user.comparePassword(req.body.password, function (err, isMatch) {
       if(isMatch) {
-          var token = jwt.sign(user, secret);
-
+        //only assosiate certain information with the token, do not show roles
+        var tokenInfo = {
+          username: user.username,
+          password: user.password,
+          id: user.id
+        }
+          var token = jwt.sign(tokenInfo, secret);
           res.json({
+            user: tokenInfo,
             success: true,
             message: 'Issued a token',
             token: token
           });
-        console.log('This user successfully logged in: ' + user[0].username);
       }else {
         res.json({success: false, message: 'Authentication failed.Wrong password.'});
     }
