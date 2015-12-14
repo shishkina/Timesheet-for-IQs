@@ -1,5 +1,5 @@
 <header>
-  <h1>welcome, user</h1>
+  <h1>welcome, user adminView</h1>
 </header>
 
 <nav class="tabs">
@@ -9,4 +9,10 @@
   <a ui-sref="adminView" ui-sref-active="active"> admin</a>
 </nav>
 
-<div> {{user.find()}}</div>
+
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="oneUser in user">
+				<h4>{{oneUser.name}}</h4>
+				<h5>{{oneUser.email}}</h5>
+			</li>
+		</ul>
