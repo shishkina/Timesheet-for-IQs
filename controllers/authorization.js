@@ -1,8 +1,8 @@
 'use strict'
 var User = require('../models/user.js');
 
-const jwt = require('jsonwebtoken');
-const secret = 'HelloSecret';
+var jwt = require('jsonwebtoken');
+var secret = 'HelloSecret';
 
 function makeToken(req, res){
   //need to check the credentials first
