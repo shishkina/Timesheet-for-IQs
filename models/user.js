@@ -11,13 +11,16 @@ var UserSchema = new mongoose.Schema({
   timesheet: [{
     date: Date,
     hoursWorked: Number,
-    status: String
+    status: {
+      type: String,
+      default: 'pending'
+    }
   }],
   // role: {
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: 'Role'
   // }
-  roles: []
+  role: String
 });
 
 UserSchema.pre('save', function (next) {
@@ -57,6 +60,20 @@ UserSchema.methods.hasRole = function(user, role){
 //   }
 // });
 // var newUser = new User({username: "gobichka", password: "poop", role:"admin"});
+
    var User = mongoose.model('User', UserSchema);
+   var admin = new User({
+       username: "admin",
+       firstName: "mister",
+       lastName: "Wonderful",
+       email: "wonderful@gmail.com",
+       password: "poop"
+
+   })
+        admin.save(function(err){
+          if(err) res.json({msg: "Unable to create a user"})
+            console.log(admin + "saving user");
+        });
+
 
 module.exports = User;

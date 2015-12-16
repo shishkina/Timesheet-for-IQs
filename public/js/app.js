@@ -21,12 +21,16 @@ function MainRouter(states, router, auth) {
 					url:'/users',
 					templateUrl: 'adminView.html'
 				})
+				.state('signup', {
+					url: '/auth/signup',
+					templateUrl: 'signup.html'
+				})
 				.state('user', {
 					url: '/users/:user',
 					templateUrl: 'home.html'
 				})
-				.state('signup', {
-					url: '/signup',
-					templateUrl: 'signup.html'
+				.state('update', {
+					url:'/users/:user',
+					templateUrl: 'update.html'
 				});
 }

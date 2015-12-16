@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 // });
 
 app.use('/authenticate', authorizationRoutes);
-app.use('/users', userRoutes);
+app.use('/', userRoutes);
 
 app.use(function(req, res, next) {
 
