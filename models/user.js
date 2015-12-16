@@ -68,7 +68,7 @@ UserSchema.methods.hasRole = function(user, role){
        lastName: "Wonderful",
        email: "wonderful@gmail.com",
        password: "poop"
-
+       
    });
         admin.save(function(err){
           if(err) res.json({msg: "Unable to create a user"})

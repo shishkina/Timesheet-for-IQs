@@ -1,14 +1,20 @@
 <div ng-controller="UserController as users">
   <header>
     <h1>welcome, user adminView</h1>
+    <div ng-controller="AuthController as auth">
+        <button ng-if="auth.isAuthenticated()" class="btn btn-primary" ng-click="auth.logout()">Logout</button>
+    </div>
+    <div>
+        <button class="btn btn-secondary" ng-click="user.getUsers()">See users</button>
+    </div>
   </header>
 
   <nav class="tabs">
     <a ui-sref="home" ui-sref-active="active">home</a>
     <a ui-sref="adminView" ui-sref-active="active"> admin</a>
   </nav>
-
-  		<ul class="list-group">
+<button></button>
+  		<ul class="list-group" "users.getUsers()">
   			<li class="list-group-item" ng-repeat="user in users">
   				<h4>{{user.username}}</h4>
   				<h5>{{user.email}}</h5>

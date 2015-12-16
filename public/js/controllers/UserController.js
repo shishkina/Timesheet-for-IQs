@@ -4,15 +4,21 @@ console.log("inside the UserController");
 
 
 function UserController($http, $auth, $state, $stateParams){
+
+
       var self = this;
+		 	self.updateOne = {};
+      // self.all = [];
       var userId = $stateParams.user;
-      if(!$auth.isAuthenticated) {
-        $state.go('login');
-      }else{
+      if($auth.isAuthenticated) {
+        console.log("this is excecuting");
         getUser();
+      }else{
+        $state.go('login');
       }
       function getUser(){
-        console.log("Logging from inside getUsers");
+        //this is working
+        console.log("Logging from inside getUser");
           $http({
             url: "/users/" + userId,
             method: "GET"
@@ -22,13 +28,29 @@ function UserController($http, $auth, $state, $stateParams){
             // console.log("self.user.data.user " + self.user.data.user);
           });
       }
-      // if($auth.isAuthenticated && self.user.role== "admin"){
-      //   getUsers();
-      // } else {
-      //   $state.go('home');
-      // }
-
+			function updateUser(){
+				console.log("in update User now");
+				$http({
+					method: 'PATCH',
+					url: "/users/" + userId,
+					data: self.updateOne,
+					headers: {'Content-Type':'application/json'}
+				}).then( function(data) {
+						//assuming you need data.data ...
+					self.user = data.data.user;
+      	$state.go('user', {user: user._id});
+				})
+			}
       function getUsers(){
+        //using factory
+        // userData.getUsers()
+        //         .$promise
+        //         .then(function(res){
+        //           self.all = res.users;
+        //         })
+        //         .catch(function(res){
+        //           $log.error('failure', res);
+        //         })
         $http({
           url: "/users",
           method: "GET"
@@ -37,7 +59,7 @@ function UserController($http, $auth, $state, $stateParams){
           self.users = data.data.users;
         })
       }
-      
+//ndid not use, used auth.signup() instead
       function createUser(){
         var data = $.param({
             username: self.username,
@@ -48,9 +70,9 @@ debugger;
         $http({
           url: "/users",
           method: "POST",
-          data: data
+          data: JSON.stringify(data)
         }).success(function(data){
-
+          $state.go('login');
         })
       }
   }

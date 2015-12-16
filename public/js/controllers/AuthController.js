@@ -12,6 +12,7 @@ function AuthController($http, $auth, $state) {
       username: self.username,
       password: self.password
     }
+		// $auth.authenticate(credentials);
     $auth.login(credentials).then(function(data){
       console.log($auth.isAuthenticated());
       var user = data.data.user;
@@ -24,13 +25,32 @@ function AuthController($http, $auth, $state) {
 
     });
   },
+		self.update = function(data){
+				var user = data.data.user;
+		},
     self.logout = function(){
       $auth.logout()
            .then(function(){
              console.log("Logging from logout");
+						 $auth.removeToken()
              $state.go('login');
       });
     }
+			self.signup = function(){
+					$auth.signup({
+				  username: self.username,
+				  password: self.password,
+					firstName: self.firstName,
+					lastName: self.lastName,
+					img_url: self.img_url,
+					email: self.email
+				}).then(function(response) {
+				  console.log(response.data);
+
+					$state.go('login')
+				});
+			}
+
     self.isAuthenticated = function() {
         return $auth.isAuthenticated();
       };

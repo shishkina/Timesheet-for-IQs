@@ -1,17 +1,17 @@
-<div ng-controller="UserController as user">
+<div ng-controller="AuthController as auth">
 <header>
     <h2>Sign Up</h2>
 </header>
 
   <section id="signup">
-    <form class="add-user">
-    <input type="text" id="signup-username" placeholder="username" ng-model="user.username">
-    <input type="text" id="signup-firstName" placeholder="First Name" ng-model="user.firstName">
-    <input type="text" id="signup-lastName" placeholder="Last Name" ng-model="user.lastName">
-    <input type="text" id="signup-email" placeholder="email" ng-model="user.email">
-    <input type="password" id="signup-password" placeholder="password" ng-model="user.password">
-    <input type="img" id="img-url" placeholder="image url" ng-model="user.img_url">
-    <input type="submit" class="btn btn-add" value="Sign up" ng-click="user.createUser()">
+    <form class="add-user" ng-submit="auth.signup()">
+    <input type="text" id="signup-username" placeholder="username" ng-model="auth.username">
+    <input type="text" id="signup-firstName" placeholder="First Name" ng-model="auth.firstName">
+    <input type="text" id="signup-lastName" placeholder="Last Name" ng-model="auth.lastName">
+    <input type="text" id="signup-email" placeholder="email" ng-model="auth.email">
+    <input type="password" id="signup-password" placeholder="password" ng-model="auth.password">
+    <input type="img" id="img-url" placeholder="image url" ng-model="auth.img_url">
+    <input type="submit" class="btn btn-add" value="Sign up">
     </form>
   </section>
 

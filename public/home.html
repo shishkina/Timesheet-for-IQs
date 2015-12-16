@@ -2,21 +2,20 @@
   <header>
 <div ng-controller="AuthController as auth">
     <button ng-if="auth.isAuthenticated()" class="btn btn-primary" ng-click="auth.logout()">Logout</button>
-
 </div>
 </header>
 <!-- ng-if="isAuthenticated() && {{user.user.role== 'admin'}}" -->
   <nav class="tabs">
     <a ui-sref-active="active" ui-sref="home" >home</a>
-    <a  ui-sref-active="active" ui-sref="adminView"> admin</a>
+    <a  ui-sref-active="active" ui-sref="update"> Update</a>
   </nav>
 
 
   <div class="wrapper" >
 
     <h1>welcome, {{user.user.username}} homepage</h1>
-        <section id="">
-          <form>
+  <section id="">
+    <form action="">
             <div class="form-group">
                 <p class="form-control" id="username" placeholder="username"> Username: {{user.user.username}}</p>
             </div>
@@ -29,9 +28,9 @@
             <div class="form-group">
           <p class="form-control" id="">Timesheet: {{user.user.timesheet}}</p>
             </div>
-          <button class="btn btn-primary" ng-click="update()">Update</button>
-          </form>
-        </section>
+      </form>
+  </section>
+          <!-- <button class="btn btn-primary" ng-click="update()">Update</button> -->
 
   </div>
 </div>

@@ -1,0 +1,45 @@
+<div ng-controller="UserController as user">
+  <header>
+<div ng-controller="AuthController as auth">
+    <button ng-if="auth.isAuthenticated()" class="btn btn-primary" ng-click="auth.logout()">Logout</button>
+</div>
+</header>
+<!-- ng-if="isAuthenticated() && {{user.user.role== 'admin'}}" -->
+  <nav class="tabs">
+    <a ui-sref-active="active" ui-sref="home" >home</a>
+    <a  ui-sref-active="active" ui-sref="adminView"> admin</a>
+  </nav>
+
+
+  <div class="wrapper" >
+
+    <h1>Update , {{user.user.username}} info</h1>
+        <section id="update">
+      <form class="update-user" ng-submit="user.updateUser()">
+            <div class="form-group">
+                <input type="text" class="form-control" id="username" placeholder="username" ng-model="user.updateOne.username"> Username: {{user.user.username}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="firstName" placeholder="First name" ng-model="user.updateOne.firstName"> First Name: {{user.user.firstName}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="lastName" placeholder="Last name" ng-model="user.updateOne.lastName"> lastName: {{user.user.lastName}}</p>
+            </div>
+            <div class="form-group">
+                <input type="type" class="form-control" id="timesheet" placeholder="timesheet(date)" ng-model="user.timesheet.date">Timesheet: {{user.user.timesheet.date}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="timesheet" placeholder="timesheet(hours)" ng-model="user.tmesheet.hoursWorked">Timesheet: {{user.user.timesheet.hoursWorked}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="image" placeholder="image_url" ng-model="user.updateOne.img_url">Image: {{user.user.img_url}}</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="role" placeholder="role">Role: {{user.user.role}}</p>
+            </div>
+          <button type="submit" class="btn btn-primary">Update User</button>
+          </form>
+        </section>
+
+  </div>
+</div>
