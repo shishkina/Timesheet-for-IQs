@@ -1,13 +1,37 @@
-<header>
-  <h1>welcome, user homepage</h1>
+<div ng-controller="UserController as user">
+  <header>
+<div ng-controller="AuthController as auth">
+    <button ng-if="auth.isAuthenticated()" class="btn btn-primary" ng-click="auth.logout()">Logout</button>
+
+</div>
 </header>
-
-<nav class="tabs">
-  <a ui-sref="home" ui-sref-active="active">home</a>
-  <a ui-sref="signup" ui-sref-active="active">signup</a>
-  <a ui-sref="login" ui-sref-active="active">login</a>
-  <a ui-sref="adminView" ui-sref-active="active"> admin</a>
-</nav>
+<!-- ng-if="isAuthenticated() && {{user.user.role== 'admin'}}" -->
+  <nav class="tabs">
+    <a ui-sref-active="active" ui-sref="home" >home</a>
+    <a  ui-sref-active="active" ui-sref="adminView"> admin</a>
+  </nav>
 
 
-<h1>{{user.username}}</h1>
+  <div class="wrapper" >
+
+    <h1>welcome, {{user.user.username}} homepage</h1>
+        <section id="">
+          <form>
+            <div class="form-group">
+                <p class="form-control" id="username" placeholder="username"> Username: {{user.user.username}}</p>
+            </div>
+            <div class="form-group">
+                <p class="form-control" id="firstName" placeholder="First name"> First Name: {{user.user.firstName}}</p>
+            </div>
+            <div class="form-group">
+                <p class="form-control" id="lastName" placeholder="Last name"> lastName: {{user.user.lastName}}</p>
+            </div>
+            <div class="form-group">
+          <p class="form-control" id="">Timesheet: {{user.user.timesheet}}</p>
+            </div>
+          <button class="btn btn-primary" ng-click="update()">Update</button>
+          </form>
+        </section>
+
+  </div>
+</div>

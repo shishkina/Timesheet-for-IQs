@@ -1,6 +1,6 @@
 console.log("inside app.js");
 var app = angular
-								.module('IQsApp', ['ui.router', 'satellizer'])
+								.module('IQsApp', ['ui.router', 'satellizer', 'ui.bootstrap'])
   							.config(['$stateProvider', '$urlRouterProvider', '$authProvider', MainRouter]);
 
 
@@ -12,21 +12,21 @@ function MainRouter(states, router, auth) {
 
 
 	states
-				.state('auth',{
+				.state('login',{
 					url: '/auth',
 					templateUrl: 'login.html',
 					controller: 'AuthController as auth'
 				})
-				.state('users', {
+				.state('adminView', {
 					url:'/users',
-					templateUrl: 'adminView.html',
-					controller: 'UserController as user'
+					templateUrl: 'adminView.html'
 				})
 				.state('user', {
-					url: '/users/:id',
-					templateUrl: 'home.html',
-					controller: 'UserController as user'
+					url: '/users/:user',
+					templateUrl: 'home.html'
 				})
-
-
+				.state('signup', {
+					url: '/signup',
+					templateUrl: 'signup.html'
+				});
 }

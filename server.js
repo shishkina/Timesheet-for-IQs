@@ -6,6 +6,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     jwt = require('jsonwebtoken'),
     expressJWT = require('express-jwt'),
+    User = require('./models/user.js'),
     app = express();
 //use public folder for static pages
 app.use(express.static('public'));
@@ -25,7 +26,10 @@ app.use(morgan('dev'));
 //     })
 //   }
 // });
+
 app.use('/authenticate', authorizationRoutes);
+app.use('/users', userRoutes);
+
 app.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
@@ -54,11 +58,6 @@ app.use(function(req, res, next) {
 
   }
 });
-
-app.use('/users', userRoutes);
-
-
-
 
 mongoose.connect('mongodb://localhost/timeSheetApp', function(err){
   if (err){

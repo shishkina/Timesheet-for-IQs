@@ -7,9 +7,11 @@ var UserSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
+  img_url: String,
   timesheet: [{
     date: Date,
-    hoursWorked: Number
+    hoursWorked: Number,
+    status: String
   }],
   // role: {
   //   type: mongoose.Schema.Types.ObjectId,

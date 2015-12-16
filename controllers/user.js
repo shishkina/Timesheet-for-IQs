@@ -21,14 +21,17 @@ function createUser(req, res){
 }
 
 function getUser(req, res){
+  console.log("anything");
   var id = req.params.id;
-
+  console.log("this is id: " + id);
   User.findById({_id:id}, function(err, user){
     if(err) res.json({msg: "Could not find user"});
+    console.log("user " + user);
 
-    res.json({user:user});
-  })
+    res.send(user);
+  });
 }
+
 module.exports = {
   getUsers: getUsers,
   createUser: createUser,

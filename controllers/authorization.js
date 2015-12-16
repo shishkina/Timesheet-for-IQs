@@ -31,8 +31,8 @@ function makeToken(req, res){
           console.log("sending token " + token);
           console.log("User being passed to token " + user);
           //changed res.json to res.send
-          res.json({
-            id: user.id,
+          res.send({
+            user: user,
             token: token
           });
       }else {

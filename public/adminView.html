@@ -1,18 +1,19 @@
-<header>
-  <h1>welcome, user adminView</h1>
-</header>
+<div ng-controller="UserController as users">
+  <header>
+    <h1>welcome, user adminView</h1>
+  </header>
 
-<nav class="tabs">
-  <a ui-sref="home" ui-sref-active="active">home</a>
-  <a ui-sref="signup" ui-sref-active="active">signup</a>
-  <a ui-sref="login" ui-sref-active="active">login</a>
-  <a ui-sref="adminView" ui-sref-active="active"> admin</a>
-</nav>
+  <nav class="tabs">
+    <a ui-sref="home" ui-sref-active="active">home</a>
+    <a ui-sref="adminView" ui-sref-active="active"> admin</a>
+  </nav>
+
+  		<ul class="list-group">
+  			<li class="list-group-item" ng-repeat="user in users">
+  				<h4>{{user.username}}</h4>
+  				<h5>{{user.email}}</h5>
+  			</li>
+  		</ul>
 
 
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="oneUser in user">
-				<h4>{{oneUser.name}}</h4>
-				<h5>{{oneUser.email}}</h5>
-			</li>
-		</ul>
+</div>
