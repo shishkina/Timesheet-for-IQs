@@ -1,0 +1,21 @@
+body {
+  background-image: url("http://wallpoper.com/images/00/43/41/78/dark-blue-background_00434178.jpg");
+  text-decoration-color: black;
+  text-align: center;
+  background-size: cover;
+}
+body img{
+  opacity: 1;
+}
+
+a:link {
+    text: black;
+}
+
+a:hover {
+    text: cyan;
+}
+
+a:active {
+    text: red;
+}
